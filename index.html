@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Otuchi Karachi David — Full Stack Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #080810;
+  --surface: #0f0f1a;
+  --surface2: #161625;
+  --orange: #ff6b2b;
+  --yellow: #ffd23f;
+  --cyan: #00e5ff;
+  --pink: #ff2d78;
+  --green: #00e5a0;
+  --text: #f0f0f5;
+  --muted: #6b7280;
+  --border: #1e1e35;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── CUSTOM CURSOR ── */
+.cursor {
+  width: 12px; height: 12px;
+  background: var(--orange);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s;
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 2px solid var(--orange);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: all 0.15s ease;
+  mix-blend-mode: difference;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 48px;
+  background: rgba(8, 8, 16, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, var(--orange), var(--yellow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--orange); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 48px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated gradient blobs */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: float 8s ease-in-out infinite;
+}
+
+.blob-1 { width: 500px; height: 500px; background: var(--orange); top: -100px; right: -100px; animation-delay: 0s; }
+.blob-2 { width: 400px; height: 400px; background: var(--cyan); bottom: -100px; left: -100px; animation-delay: -3s; }
+.blob-3 { width: 300px; height: 300px; background: var(--pink); top: 50%; left: 40%; animation-delay: -5s; }
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 900px; }
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--orange);
+  border: 1px solid rgba(255,107,43,0.3);
+  background: rgba(255,107,43,0.08);
+  border-radius: 20px;
+  padding: 6px 16px;
+  margin-bottom: 28px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.hero-tag::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(64px, 10vw, 120px);
+  line-height: 0.95;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+}
+
+.hero h1 .line-1 { color: #fff; display: block; }
+.hero h1 .line-2 {
+  display: block;
+  background: linear-gradient(90deg, var(--orange), var(--yellow), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0%; }
+  50% { background-position: 100%; }
+}
+
+.hero-sub {
+  font-size: 18px;
+  color: #94a3b8;
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.hero-sub strong { color: var(--cyan); font-weight: 600; }
+
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--orange), var(--pink));
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 32px rgba(255,107,43,0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(255,107,43,0.4);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--text);
+  padding: 14px 32px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(0,229,255,0.05);
+}
+
+/* ── SECTIONS ── */
+section { padding: 100px 48px; }
+
+.section-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--orange);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.section-title span {
+  background: linear-gradient(90deg, var(--cyan), var(--green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-top: 48px;
+}
+
+.about-text p {
+  font-size: 16px;
+  color: #94a3b8;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.about-text p strong { color: var(--text); }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--orange), var(--yellow));
+}
+
+.stat-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-4px);
+}
+
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  background: linear-gradient(135deg, var(--orange), var(--yellow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* ── SKILLS ── */
+#skills { background: var(--surface); }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.skill-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255,107,43,0.03));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.skill-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-4px);
+}
+
+.skill-card:hover::after { opacity: 1; }
+
+.skill-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.skill-cat {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--orange);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.skill-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--cyan);
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+/* ── PROJECTS ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--orange);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.project-header {
+  padding: 28px 28px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.project-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.project-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.status-live {
+  background: rgba(0,229,160,0.1);
+  color: var(--green);
+  border: 1px solid rgba(0,229,160,0.25);
+}
+
+.status-soon {
+  background: rgba(255,210,63,0.1);
+  color: var(--yellow);
+  border: 1px solid rgba(255,210,63,0.25);
+}
+
+.project-body { padding: 20px 28px 28px; }
+
+.project-body h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.project-body p {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.stack-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.project-links {
+  display: flex;
+  gap: 12px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.link-live {
+  background: linear-gradient(135deg, var(--orange), var(--pink));
+  color: #fff;
+}
+
+.link-live:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.link-disabled {
+  background: var(--surface2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  cursor: not-allowed;
+}
+
+/* ── CV SECTION ── */
+#cv { background: var(--surface); }
+
+.cv-container {
+  margin-top: 48px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.cv-header {
+  background: linear-gradient(135deg, var(--orange), var(--pink));
+  padding: 32px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cv-header h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.cv-header p { color: rgba(255,255,255,0.8); font-size: 14px; margin-top: 4px; }
+
+.cv-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  backdrop-filter: blur(8px);
+}
+
+.cv-download:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+
+.cv-preview {
+  background: var(--bg);
+  padding: 48px;
+}
+
+/* CV PREVIEW STYLES */
+.cv-preview-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  background: #fff;
+  color: #1a1a2e;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'Outfit', sans-serif;
+}
+
+.cv-top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  background: #0d1b2a;
+}
+
+.cv-top-left {
+  padding: 36px 40px;
+}
+
+.cv-top-left .cv-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 38px;
+  color: #fff;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+.cv-top-left .cv-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #2eb8a4;
+  margin-top: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.cv-top-right {
+  background: #1a8a7a;
+  padding: 32px 32px;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+
+.cv-contact-item {
+  font-size: 11px;
+  color: rgba(255,255,255,0.9);
+}
+
+.cv-body {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+}
+
+.cv-main { padding: 28px 32px; }
+.cv-side { padding: 28px 24px; background: #f5f0e8; }
+
+.cv-section-head {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #1a8a7a;
+  border-bottom: 2px solid #2eb8a4;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  margin-top: 20px;
+}
+
+.cv-section-head:first-child { margin-top: 0; }
+
+.cv-job-title { font-weight: 700; font-size: 13px; color: #1a1a2e; }
+.cv-job-co { font-size: 11px; color: #1a8a7a; margin-bottom: 6px; }
+.cv-job-date { font-size: 10px; color: #6b7280; font-style: italic; }
+
+.cv-li {
+  font-size: 11px;
+  color: #374151;
+  padding-left: 14px;
+  position: relative;
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.cv-li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #2eb8a4;
+  font-size: 9px;
+  top: 1px;
+}
+
+.cv-skill-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; margin-bottom: 4px; margin-top: 12px; }
+.cv-skill-label:first-child { margin-top: 0; }
+
+.cv-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 4px; }
+.cv-tag { font-size: 10px; background: #fff; border: 1px solid #e2e0d8; border-radius: 3px; padding: 2px 6px; color: #374151; font-family: 'JetBrains Mono', monospace; }
+
+.cv-edu-deg { font-weight: 700; font-size: 12px; color: #1a1a2e; }
+.cv-edu-sch { font-size: 11px; color: #1a8a7a; }
+.cv-badge { display: inline-block; background: #1a8a7a; color: #fff; font-size: 9px; padding: 2px 6px; border-radius: 10px; margin-top: 4px; }
+
+/* ── CONTACT ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-top: 48px;
+  align-items: start;
+}
+
+.contact-info h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.contact-info p {
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.contact-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.contact-detail { font-size: 14px; color: var(--muted); }
+.contact-detail strong { display: block; color: var(--text); font-size: 15px; }
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.2s;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.contact-link:hover {
+  border-color: var(--orange);
+  background: rgba(255,107,43,0.05);
+  transform: translateX(4px);
+}
+
+.contact-link span { color: var(--muted); font-size: 18px; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 32px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.footer-logo {
+  background: linear-gradient(90deg, var(--orange), var(--yellow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+/* ── ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 3px; }
+
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 100px 24px 60px; }
+  section { padding: 60px 24px; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .cv-top { grid-template-columns: 1fr; }
+  .cv-body { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">KOD.DEV</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Available for opportunities</div>
+    <h1>
+      <span class="line-1">Otuchi Karachi</span>
+      <span class="line-2">David</span>
+    </h1>
+    <p class="hero-sub">
+      Full Stack Developer & IT Infrastructure Engineer. Founder of <strong>KOD Techsource Limited</strong>. Building mission-critical systems across healthcare, commerce and enterprise operations in Nigeria.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View My Work →</a>
+      <a href="#contact" class="btn-secondary">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag">// Who I Am</div>
+  <div class="section-title">About <span>Me</span></div>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>I'm a <strong>Mid-Level Full Stack Developer</strong> with 3+ years of experience building enterprise systems that solve real operational problems. I started KOD Techsource Limited to bring affordable, smart technology to Nigerian businesses and healthcare facilities.</p>
+      <p>My background spans both <strong>software development and IT infrastructure</strong> — I've deployed hospital systems on Linux/Docker servers, set up CCTV and telecom networks, and built inventory and laboratory management systems currently serving real clients.</p>
+      <p>I'm currently studying <strong>DevOps Engineering at TS Academy</strong> and enrolled at <strong>AltSchool Africa</strong> — always pushing deeper into the stack.</p>
+      <p>Based in <strong>Delta State, Nigeria</strong>. Open to remote opportunities and collaborations.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Projects Shipped</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Live Productions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">1st</div>
+        <div class="stat-label">Class Honours</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag">// What I Work With</div>
+  <div class="section-title">Tech <span>Stack</span></div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-cat">Backend</div>
+      <h3>Server-Side Development</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">PHP</span>
+        <span class="skill-tag">Laravel</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Django</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Express</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🎨</div>
+      <div class="skill-cat">Frontend</div>
+      <h3>UI & Interfaces</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+        <span class="skill-tag">jQuery</span>
+        <span class="skill-tag">Bootstrap</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🗄️</div>
+      <div class="skill-cat">Database</div>
+      <h3>Data Management</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Database Design</span>
+        <span class="skill-tag">Query Optimization</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">☁️</div>
+      <div class="skill-cat">DevOps & Cloud</div>
+      <h3>Infrastructure</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">YAML</span>
+        <span class="skill-tag">Railway</span>
+        <span class="skill-tag">Git</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📊</div>
+      <div class="skill-cat">Dashboards & Monitoring</div>
+      <h3>Operational Systems</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Real-Time Dashboards</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">Data Logging</span>
+        <span class="skill-tag">Cron Jobs</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🔧</div>
+      <div class="skill-cat">IT Infrastructure</div>
+      <h3>Hardware & Networks</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Network Admin</span>
+        <span class="skill-tag">CCTV Setup</span>
+        <span class="skill-tag">Telecom</span>
+        <span class="skill-tag">Server Config</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-tag">// What I've Built</div>
+  <div class="section-title">My <span>Projects</span></div>
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-icon" style="background: rgba(255,107,43,0.1);">📦</div>
+        <span class="project-status status-live">● Live</span>
+      </div>
+      <div class="project-body">
+        <h3>Inventory Management System</h3>
+        <p>A smart, full-featured inventory platform for traders and small businesses. Built with anti-theft stock monitoring, real-time dashboards, POS workflows, and automated midnight snapshots for discrepancy detection.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Laravel</span>
+          <span class="stack-tag">MySQL</span>
+          <span class="stack-tag">JavaScript</span>
+          <span class="stack-tag">REST API</span>
+          <span class="stack-tag">Docker</span>
+        </div>
+        <div class="project-links">
+          <a href="https://inventory-app-production-fe5b.up.railway.app" target="_blank" class="project-link link-live">View Live →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-icon" style="background: rgba(0,229,255,0.1);">🧪</div>
+        <span class="project-status status-live">● Live</span>
+      </div>
+      <div class="project-body">
+        <h3>Laboratory Management System</h3>
+        <p>A production-grade lab management platform serving two hospitals in Warri, Nigeria. Handles diagnostic test requests, results processing, patient records, and payment tracking with full audit trail.</p>
+        <div class="project-stack">
+          <span class="stack-tag">PHP</span>
+          <span class="stack-tag">MySQL</span>
+          <span class="stack-tag">JavaScript</span>
+          <span class="stack-tag">Linux</span>
+          <span class="stack-tag">Railway</span>
+        </div>
+        <div class="project-links">
+          <a href="https://laboratory-app-production.up.railway.app" target="_blank" class="project-link link-live">View Live →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-icon" style="background: rgba(255,210,63,0.1);">🛒</div>
+        <span class="project-status status-soon">◌ Coming Soon</span>
+      </div>
+      <div class="project-body">
+        <h3>E-Commerce Platform</h3>
+        <p>A full-featured e-commerce system for a commercial hub. Includes product management, order tracking, payment integration, and vendor management — built for scalability on AWS infrastructure.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Laravel</span>
+          <span class="stack-tag">MySQL</span>
+          <span class="stack-tag">JavaScript</span>
+          <span class="stack-tag">AWS</span>
+        </div>
+        <div class="project-links">
+          <span class="project-link link-disabled">In Development</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-icon" style="background: rgba(0,229,160,0.1);">🏥</div>
+        <span class="project-status status-live">● Deployed</span>
+      </div>
+      <div class="project-body">
+        <h3>Hospital Management System</h3>
+        <p>Mission-critical hospital management system deployed for Divine Charity Clinic on a Linux server running Docker. Covers patient records, billing, reporting, and full IT infrastructure including CCTV and telecom.</p>
+        <div class="project-stack">
+          <span class="stack-tag">PHP</span>
+          <span class="stack-tag">MySQL</span>
+          <span class="stack-tag">Docker</span>
+          <span class="stack-tag">Linux</span>
+        </div>
+        <div class="project-links">
+          <span class="project-link link-disabled">Private Deployment</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+  <div class="section-tag">// My Resume</div>
+  <div class="section-title">Curriculum <span>Vitae</span></div>
+  <div class="cv-container reveal">
+    <div class="cv-header">
+      <div>
+        <h3>Otuchi Karachi David</h3>
+        <p>Full Stack Developer & IT Infrastructure Engineer · Mid-Level · 3+ Years</p>
+      </div>
+      <a href="Otuchi_Karachi_David_CV.html" download class="cv-download">⬇ Download CV</a>
+    </div>
+    <div class="cv-preview">
+      <div class="cv-preview-inner">
+        <!-- CV TOP -->
+        <div class="cv-top">
+          <div class="cv-top-left">
+            <div class="cv-name">Otuchi Karachi David</div>
+            <div class="cv-role">Full Stack Developer & IT Infrastructure Engineer</div>
+          </div>
+          <div class="cv-top-right">
+            <div class="cv-contact-item">✉ karachidavid31@gmail.com</div>
+            <div class="cv-contact-item">📞 09075274780</div>
+            <div class="cv-contact-item">📍 Delta State, Nigeria</div>
+            <div class="cv-contact-item">🔗 linkedin.com/in/Otuchi</div>
+            <div class="cv-contact-item">💻 github.com/kezzy</div>
+          </div>
+        </div>
+        <!-- CV BODY -->
+        <div class="cv-body">
+          <div class="cv-main">
+            <div class="cv-section-head">Profile</div>
+            <p style="font-size:11px; color:#374151; line-height:1.6; margin-bottom:12px;">Results-driven Full Stack Developer and IT Infrastructure Engineer with 3+ years deploying mission-critical systems. Founder of KOD Techsource Limited. Experienced in real-time operational dashboards, Linux/Docker infrastructure, and bridging legacy systems with modern cloud architecture.</p>
+
+            <div class="cv-section-head">Work Experience</div>
+            <div class="cv-job-title">IT Manager & Developer</div>
+            <div style="display:flex; justify-content:space-between;">
+              <div class="cv-job-co">Divine Charity Clinic</div>
+              <div class="cv-job-date">2020 – 2023</div>
+            </div>
+            <div class="cv-li">Deployed mission-critical Hospital Management System on Linux/Docker with zero-downtime requirement.</div>
+            <div class="cv-li">Designed complete IT infrastructure — network, CCTV surveillance, and telecom systems.</div>
+            <div class="cv-li">Administered server configurations, user access controls, and hardware management.</div>
+
+            <div style="margin-top:12px;">
+              <div class="cv-job-title">Freelance Full Stack Developer</div>
+              <div style="display:flex; justify-content:space-between;">
+                <div class="cv-job-co">KOD Techsource Limited (Founder)</div>
+                <div class="cv-job-date">2023 – Present</div>
+              </div>
+              <div class="cv-li">Built Laboratory Management System in active production across two hospitals in Warri.</div>
+              <div class="cv-li">Developing real-time Inventory Monitoring System with automated snapshots and live dashboards.</div>
+              <div class="cv-li">Building cloud-ready E-Commerce Platform on AWS-compatible infrastructure.</div>
+            </div>
+
+            <div class="cv-section-head">Education</div>
+            <div class="cv-edu-deg">B.Tech – Information Technology</div>
+            <div class="cv-edu-sch">Karunya University, India</div>
+            <span class="cv-badge">🏅 First Class Honours</span>
+          </div>
+          <div class="cv-side">
+            <div class="cv-section-head" style="margin-top:0;">Skills</div>
+            <div class="cv-skill-label">Languages</div>
+            <div class="cv-tags">
+              <span class="cv-tag">PHP</span><span class="cv-tag">Python</span><span class="cv-tag">JavaScript</span>
+            </div>
+            <div class="cv-skill-label">Frameworks</div>
+            <div class="cv-tags">
+              <span class="cv-tag">Laravel</span><span class="cv-tag">Django</span><span class="cv-tag">Express</span>
+            </div>
+            <div class="cv-skill-label">DevOps</div>
+            <div class="cv-tags">
+              <span class="cv-tag">AWS</span><span class="cv-tag">Docker</span><span class="cv-tag">Linux</span>
+            </div>
+            <div class="cv-skill-label">Dashboards</div>
+            <div class="cv-tags">
+              <span class="cv-tag">Real-Time</span><span class="cv-tag">REST API</span>
+            </div>
+            <div class="cv-section-head">Certifications</div>
+            <div style="font-size:11px; color:#374151; line-height:1.6;">
+              DevOps Engineering<br/>TS Academy <em>(In Progress)</em><br/><br/>
+              AltSchool Africa<br/>Software Engineering <em>(In Progress)</em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag">// Let's Connect</div>
+  <div class="section-title">Get In <span>Touch</span></div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>Let's Build Something Great</h3>
+      <p>I'm open to freelance projects, full-time roles, and collaborations — especially in fintech, healthcare IT, and enterprise systems. Based in Nigeria, available remotely worldwide.</p>
+      <div class="contact-item">
+        <div class="contact-icon" style="background: rgba(255,107,43,0.1);">✉</div>
+        <div class="contact-detail">
+          <strong>karachidavid31@gmail.com</strong>
+          Email me anytime
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon" style="background: rgba(0,229,255,0.1);">📞</div>
+        <div class="contact-detail">
+          <strong>09075274780</strong>
+          Call or WhatsApp
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon" style="background: rgba(0,229,160,0.1);">📍</div>
+        <div class="contact-detail">
+          <strong>Delta State, Nigeria</strong>
+          Available remotely
+        </div>
+      </div>
+    </div>
+    <div class="contact-links reveal">
+      <a href="https://linkedin.com/in/Otuchi" target="_blank" class="contact-link">
+        <span>🔗 LinkedIn — linkedin.com/in/Otuchi</span>
+        <span>→</span>
+      </a>
+      <a href="https://github.com/kezzy" target="_blank" class="contact-link">
+        <span>💻 GitHub — github.com/kezzy</span>
+        <span>→</span>
+      </a>
+      <a href="mailto:karachidavid31@gmail.com" class="contact-link">
+        <span>✉ Email — karachidavid31@gmail.com</span>
+        <span>→</span>
+      </a>
+      <a href="https://inventory-app-production-fe5b.up.railway.app" target="_blank" class="contact-link">
+        <span>📦 Inventory App — Live Demo</span>
+        <span>→</span>
+      </a>
+      <a href="https://laboratory-app-production.up.railway.app" target="_blank" class="contact-link">
+        <span>🧪 Lab System — Live Demo</span>
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">KOD TECHSOURCE LIMITED</div>
+  <div>Built by Otuchi Karachi David · © 2026</div>
+  <div>Delta State, Nigeria</div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursor.style.left = mouseX - 6 + 'px';
+  cursor.style.top = mouseY - 6 + 'px';
+});
+
+function animateRing() {
+  ringX += (mouseX - ringX - 18) * 0.12;
+  ringY += (mouseY - ringY - 18) * 0.12;
+  ring.style.left = ringX + 'px';
+  ring.style.top = ringY + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 100);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// Nav active state
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--orange)' : '';
+  });
+});
+</script>
+</body>
+</html>
