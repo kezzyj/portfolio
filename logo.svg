@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="600" height="200">
+  <defs>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:1" />
+      <stop offset="80%" style="stop-color:#1a6b8a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanWhite" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00bcd4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00E5FF;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Outer hexagon shape -->
+  <polygon points="75,30 105,30 120,56 105,82 75,82 60,56" 
+           fill="none" stroke="url(#cyanGrad)" stroke-width="2.5" filter="url(#glow)"/>
+
+  <!-- Inner K shape -->
+  <g fill="url(#cyanGrad)" filter="url(#glow)">
+    <rect x="68" y="40" width="5" height="32" rx="1"/>
+    <polygon points="73,56 88,40 94,40 79,56"/>
+    <polygon points="73,56 88,72 94,72 79,56"/>
+  </g>
+
+  <!-- Decorative corner dots -->
+  <circle cx="60" cy="56" r="2" fill="#00E5FF" opacity="0.9"/>
+  <circle cx="120" cy="56" r="2" fill="#00E5FF" opacity="0.9"/>
+
+  <!-- Company Name: KOD -->
+  <text x="145" y="80" 
+        font-family="'Courier New', monospace" 
+        font-size="52" 
+        font-weight="900" 
+        fill="url(#cyanGrad)"
+        filter="url(#glow)"
+        letter-spacing="6">KOD</text>
+
+  <!-- Thin divider line -->
+  <line x1="145" y1="92" x2="520" y2="92" stroke="#00bcd4" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- TECHSOURCE -->
+  <text x="146" y="118" 
+        font-family="'Courier New', monospace" 
+        font-size="22" 
+        font-weight="700" 
+        fill="#00bcd4"
+        filter="url(#softglow)"
+        letter-spacing="10">TECHSOURCE</text>
+
+  <!-- LIMITED -->
+  <text x="146" y="143" 
+        font-family="'Courier New', monospace" 
+        font-size="11" 
+        font-weight="400" 
+        fill="#00E5FF"
+        opacity="0.75"
+        letter-spacing="14">LIMITED</text>
+
+
+</svg>

@@ -76,6 +76,23 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.nav-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-logo-img {
+  height: 44px;
+  width: auto;
+  filter: drop-shadow(0 0 8px rgba(0, 188, 212, 0.4));
+  transition: filter 0.3s;
+}
+
+.nav-brand:hover .nav-logo-img {
+  filter: drop-shadow(0 0 14px rgba(0, 188, 212, 0.7));
+}
 
 .nav-links {
   display: flex;
@@ -810,7 +827,9 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">KOD TECHSOURCE LTD</div>
+  <a class="nav-brand" href="#home">
+  <img src="logo.svg" alt="KOD Techsource Limited" class="nav-logo-img"/>
+</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
