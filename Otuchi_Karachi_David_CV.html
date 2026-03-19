@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Otuchi Karachi David – Full Stack Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1b2a;
+    --teal: #1a8a7a;
+    --teal-light: #2eb8a4;
+    --cream: #f5f0e8;
+    --warm-white: #fafaf7;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --border: #e2e0d8;
+    --accent-bg: #e8f5f3;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 0 60px rgba(0,0,0,0.08);
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    background: var(--navy);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .header-left {
+    padding: 44px 40px 44px 48px;
+    background: var(--navy);
+  }
+
+  .header-left .name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    color: #fff;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+
+  .header-left .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--teal-light);
+    margin-top: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .header-left .tagline {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #8090a8;
+    font-weight: 300;
+  }
+
+  .header-right {
+    background: var(--teal);
+    padding: 40px 40px 40px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    min-width: 260px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255,255,255,0.9);
+    font-size: 12.5px;
+    text-decoration: none;
+  }
+
+  .contact-item .icon {
+    width: 18px;
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.8;
+  }
+
+  /* ── BODY ── */
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    padding: 36px 36px 36px 48px;
+    border-right: 1px solid var(--border);
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    padding: 36px 30px;
+    background: var(--cream);
+  }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 32px; }
+
+  .section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--teal-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ── JOB ── */
+  .job { margin-bottom: 24px; }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+  }
+
+  .job-title {
+    font-weight: 600;
+    font-size: 14.5px;
+    color: var(--text);
+  }
+
+  .job-dates {
+    font-size: 11.5px;
+    color: var(--muted);
+    font-style: italic;
+    white-space: nowrap;
+    margin-left: 12px;
+  }
+
+  .job-company {
+    font-size: 12.5px;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .job ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .job ul li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 6px;
+    color: #374151;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .job ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--teal-light);
+    font-size: 11px;
+    top: 2px;
+  }
+
+  /* ── PROJECT ── */
+  .project {
+    background: var(--accent-bg);
+    border-left: 3px solid var(--teal-light);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+  }
+
+  .project-name {
+    font-weight: 600;
+    font-size: 13.5px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .project-stack {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+
+  .project ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .project ul li {
+    position: relative;
+    padding-left: 16px;
+    font-size: 12.5px;
+    color: #374151;
+    margin-bottom: 4px;
+  }
+
+  .project ul li::before {
+    content: "·";
+    position: absolute;
+    left: 4px;
+    color: var(--teal-light);
+    font-weight: bold;
+  }
+
+  /* ── SIDEBAR ITEMS ── */
+  .skill-group { margin-bottom: 18px; }
+
+  .skill-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .tag {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 11.5px;
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+  }
+
+  .cert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 12.5px;
+    color: var(--text);
+  }
+
+  .cert-item::before {
+    content: "◆";
+    color: var(--teal-light);
+    font-size: 8px;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+
+  .edu-degree {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+
+  .edu-school {
+    font-size: 12.5px;
+    color: var(--teal);
+    margin-bottom: 3px;
+  }
+
+  .edu-note {
+    font-size: 11.5px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  @media print {
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+    body { background: #fff; }
+    .page { box-shadow: none; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <div class="name">Otuchi Karachi David</div>
+      <div class="role">Full Stack Developer & IT Infrastructure Engineer</div>
+      <div class="tagline">Critical Systems · Operational Dashboards · Cloud & DevOps · 3+ Years · Nigeria</div>
+    </div>
+    <div class="header-right">
+      <a class="contact-item" href="/cdn-cgi/l/email-protection#e18a8093808289888580978885d2d0a1868c80888dcf828e8c">
+        <span class="icon">✉</span> <span class="__cf_email__" data-cfemail="abc0cad9cac8c3c2cfcaddc2cf989aebccc6cac2c785c8c4c6">[email&#160;protected]</span>
+      </a>
+      <span class="contact-item">
+        <span class="icon">📞</span> 09075274780
+      </span>
+      <span class="contact-item">
+        <span class="icon">📍</span> Delta State, Nigeria
+      </span>
+      <a class="contact-item" href="https://linkedin.com/in/Otuchi" target="_blank">
+        <span class="icon">in</span> linkedin.com/in/Otuchi
+      </a>
+      <a class="contact-item" href="https://github.com/kezzy" target="_blank">
+        <span class="icon">⌥</span> github.com/kezzy
+      </a>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- MAIN -->
+    <div class="main">
+
+      <!-- SUMMARY -->
+      <div class="section">
+        <div class="section-title">Profile</div>
+        <p style="font-size:13.5px; color:#374151; line-height:1.65;">
+          Results-driven Full Stack Developer and IT Infrastructure Engineer with 3+ years deploying mission-critical systems across healthcare and enterprise operations. Founder of <strong>KOD Techsource Limited</strong>. Experienced in building real-time operational dashboards, managing IT networks and surveillance infrastructure, and deploying production-critical applications on Linux/Docker. Adept at bridging legacy operational systems with modern cloud infrastructure — bringing both development depth and infrastructure reliability to high-stakes environments like energy and power generation.
+        </p>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <div class="section">
+        <div class="section-title">Work Experience</div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">IT Manager &amp; Developer</div>
+            <div class="job-dates">2020 – 2023</div>
+          </div>
+          <div class="job-company">Divine Charity Clinic</div>
+          <ul>
+            <li>Deployed a mission-critical Hospital Management System on a Linux server running Docker — zero-downtime requirement covering patient records, billing, and reporting workflows.</li>
+            <li>Designed and implemented complete IT infrastructure from scratch — including network setup, CCTV surveillance systems, and telecom systems across the facility.</li>
+            <li>Administered server configurations, user access controls, and hardware management ensuring continuous system uptime.</li>
+            <li>Conducted ICT training and orientation for staff, driving adoption of enterprise systems across departments.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Freelance Full Stack Developer</div>
+            <div class="job-dates">2023 – Present</div>
+          </div>
+          <div class="job-company">KOD Techsource Limited (Founder)</div>
+          <ul>
+            <li>Built and deployed a Laboratory Management System in active production across two hospitals in Warri — managing test workflows, results, and patient data at scale.</li>
+            <li>Developed a real-time Inventory Monitoring System with automated midnight data snapshots, live discrepancy alerts, and operational dashboards for business owners — analogous to plant monitoring and reporting systems.</li>
+            <li>Architected backend APIs and data pipelines using Laravel and MySQL to support multi-user concurrent operations with data integrity controls.</li>
+            <li>Building a cloud-ready E-Commerce Platform on AWS-compatible infrastructure with scalable, resilient deployment architecture.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="section">
+        <div class="section-title">Notable Projects</div>
+
+        <div class="project">
+          <div class="project-name">Real-Time Inventory Monitoring & Dashboard System</div>
+          <div class="project-stack">Laravel · MySQL · JavaScript · REST API</div>
+          <ul>
+            <li>Built operational dashboard displaying live stock levels, alerts, and discrepancy reports — designed for business owners monitoring multiple locations.</li>
+            <li>Automated scheduled data snapshots (midnight cron jobs) for historical trend analysis and anomaly detection.</li>
+            <li>Role-based access control with separate views for managers, operators, and auditors.</li>
+            <li>POS integration with real-time transaction logging and end-of-day reconciliation reports.</li>
+          </ul>
+        </div>
+
+        <div class="project">
+          <div class="project-name">Laboratory Management System</div>
+          <div class="project-stack">PHP · MySQL · Linux · Docker</div>
+          <ul>
+            <li>Multi-branch system managing test requests, results tracking, and patient records across two hospitals simultaneously.</li>
+            <li>Built reporting module generating daily/weekly operational summaries for management review.</li>
+            <li>Currently in active production — zero critical downtime since deployment.</li>
+          </ul>
+        </div>
+
+        <div class="project">
+          <div class="project-name">Hospital IT Infrastructure Deployment</div>
+          <div class="project-stack">Linux Server · Docker · Network Admin · CCTV · Telecom</div>
+          <ul>
+            <li>End-to-end IT infrastructure setup: server deployment, LAN networking, CCTV surveillance, and telecom systems.</li>
+            <li>Containerised application deployment on Linux using Docker for isolation, portability, and uptime reliability.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- SKILLS -->
+      <div class="section">
+        <div class="section-title">Skills</div>
+
+        <div class="skill-group">
+          <div class="skill-label">Languages</div>
+          <div class="skill-tags">
+            <span class="tag">PHP</span>
+            <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">Frameworks</div>
+          <div class="skill-tags">
+            <span class="tag">Laravel</span>
+            <span class="tag">Django</span>
+            <span class="tag">Express.js</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">Database</div>
+          <div class="skill-tags">
+            <span class="tag">MySQL</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">DevOps & Cloud</div>
+          <div class="skill-tags">
+            <span class="tag">AWS</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Linux</span>
+            <span class="tag">YAML</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">Dashboards & Monitoring</div>
+          <div class="skill-tags">
+            <span class="tag">Real-Time Dashboards</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Data Logging</span>
+            <span class="tag">Cron Jobs</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">Infrastructure</div>
+          <div class="skill-tags">
+            <span class="tag">Network Admin</span>
+            <span class="tag">CCTV</span>
+            <span class="tag">Telecom</span>
+            <span class="tag">Server Config</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="section">
+        <div class="section-title">Education</div>
+        <div class="edu-degree">B.Tech – Information Technology</div>
+        <div class="edu-school">Karunya University, India</div>
+        <div class="edu-note">First Class Honours</div>
+        <span class="badge">🏅 First Class</span>
+      </div>
+
+      <!-- CERTIFICATIONS -->
+      <div class="section">
+        <div class="section-title">Certifications</div>
+        <div class="cert-item">DevOps Engineering – TS Academy <em>(In Progress)</em></div>
+        <div class="cert-item">AltSchool Africa – Software Engineering <em>(In Progress)</em></div>
+      </div>
+
+      <!-- LANGUAGES -->
+      <div class="section">
+        <div class="section-title">About</div>
+        <p style="font-size:12.5px; color:#374151; line-height:1.6;">
+          Founder of <strong>KOD Techsource Limited</strong>. Experienced in deploying IT systems in high-stakes, always-on environments. Passionate about operational technology, infrastructure reliability, and building dashboards that give decision-makers real-time visibility into critical operations.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
